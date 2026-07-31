@@ -1,0 +1,1743 @@
+/*
+ * Только планшет и телефон (≤1024px).
+ * Веб-версия (desktop) — в styles.css, без @media (max-width).
+ * Правки мобильной вёрстки — только в этом файле.
+ */
+
+@media (max-width: 1024px) {
+  :root {
+    /* −2 шага размера (по 0.1rem в панели дизайна) */
+    --mobile-text-step: 0.2rem;
+    --mobile-section-blur: 22px;
+    --invite-bg-mobile-tint-color: #f9f6f0;
+    --invite-bg-mobile-tint-opacity: 0%;
+    --details-bg-mobile-tint-color: #ffffff;
+    --details-bg-mobile-tint-opacity: 0%;
+    --details-venue-sketch-opacity: 40;
+    --dresscode-bg-mobile-tint-color: #f9f6f0;
+    --dresscode-bg-mobile-tint-opacity: 0%;
+    --timeline-bg-mobile-tint-color: #8b9e85;
+    --timeline-bg-mobile-tint-opacity: 0%;
+    --organization-bg-mobile-tint-color: #ffffff;
+    --organization-bg-mobile-tint-opacity: 0%;
+    --rsvp-bg-mobile-tint-color: #f9f6f0;
+    --rsvp-bg-mobile-tint-opacity: 0%;
+    --final-bg-mobile-tint-color: #f9f6f0;
+    --final-bg-mobile-tint-opacity: 0%;
+  }
+
+  body {
+    background: var(--linen);
+  }
+
+  body::before {
+    display: none;
+  }
+
+  body::after {
+    display: none;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    background: var(--hero-bg);
+  }
+
+  .content-layout {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    grid-template-columns: 1fr;
+    background: var(--linen);
+  }
+
+  .photo-column {
+    display: none;
+  }
+
+  .content-column {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .content-column,
+  .content-main {
+    background: transparent;
+  }
+
+  .content-main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.65rem 0 1.2rem;
+    box-sizing: border-box;
+  }
+
+  .content-column .section,
+  footer.final {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    margin: 0 auto 0.9rem;
+    border-radius: 18px;
+    border: 1px solid rgba(247, 249, 244, 0.24);
+    box-shadow:
+      0 12px 28px rgba(20, 28, 18, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    overflow: hidden;
+  }
+
+  .content-column .section:last-of-type,
+  footer.final {
+    margin-bottom: 0;
+  }
+
+  .content-column .section-inner {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 0.2rem 0;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .content-column .section-title,
+  #rsvp .section-title,
+  #rsvp #rsvpTitle {
+    text-align: left;
+    padding: 0;
+  }
+
+  .content-column .section-title::after {
+    left: 0;
+    transform: none;
+  }
+
+  .content-column .section-subtitle,
+  #details .section-subtitle,
+  #details #detailsVenue {
+    text-align: left;
+  }
+
+  .content-column .section-inner > p,
+  .content-column .section-text,
+  #inviteMessage #heroText,
+  #dresscode #dresscodeText,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids,
+  #details #detailsAddress,
+  #details #mapText,
+  #details .organizer-contact,
+  #details #mapContact {
+    text-align: left;
+    text-align-last: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+  }
+
+  .timeline-list {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #timeline .program-list.timeline-list {
+    margin: 0;
+    padding: 0 0 0 1.5em;
+  }
+
+  #timeline .timeline-item span {
+    text-align: left;
+    text-align-last: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+  }
+
+  #timeline .timeline-item strong {
+    text-align: left;
+  }
+
+  .palette,
+  .palette--fabric-photo {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--palette-gap, 12px);
+    margin: 0;
+  }
+
+  #rsvpForm {
+    text-align: left;
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    gap: var(--rsvp-field-gap, 12px);
+  }
+
+  .content-column .btn,
+  #rsvpForm .rsvp-submit {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .location-routes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .location-routes > a.location-route-btn.btn,
+  #routeLink.location-route-btn,
+  #transitRouteLink.location-route-btn,
+  #rsvpForm .rsvp-submit.btn,
+  #rsvpForm button.rsvp-submit {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    height: var(--site-action-btn-height, 3.5rem) !important;
+    min-height: var(--site-action-btn-height, 3.5rem) !important;
+    white-space: normal;
+  }
+
+  footer.final .section-inner {
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 2rem));
+    margin: 0 auto;
+    padding-inline: 0;
+  }
+
+  footer.final #finalText,
+  footer.final .final-signature {
+    text-align: left;
+    text-align-last: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+  }
+
+  #inviteMessage {
+    background-color: var(--invite-bg);
+    color: var(--invite-color-body);
+  }
+
+  #inviteMessage .section-title {
+    color: var(--invite-color-title);
+    font-family: var(--invite-font-title), serif;
+    font-style: var(--invite-font-title-style, normal);
+    font-size: calc(var(--invite-size-title) - var(--mobile-text-step));
+  }
+
+  #inviteMessage .section-text,
+  #inviteMessage #heroText {
+    color: var(--invite-color-body);
+    font-family: var(--invite-font-body), sans-serif;
+    font-style: var(--invite-font-body-style, normal);
+    font-size: calc(var(--invite-size-body) - var(--mobile-text-step));
+  }
+
+  #details {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: var(--details-bg);
+    color: var(--details-color-body);
+  }
+
+  #details .details-venue-layer::after {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--details-bg) 52%, transparent) 0%,
+      color-mix(in srgb, var(--details-bg) 16%, transparent) 40%,
+      color-mix(in srgb, var(--details-bg) 20%, transparent) 70%,
+      color-mix(in srgb, var(--details-bg) 46%, transparent) 100%
+    );
+  }
+
+  #details .section-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  #details .section-title {
+    color: var(--details-color-title);
+    font-family: var(--details-font-title), serif;
+    font-style: var(--details-font-title-style, normal);
+    font-size: calc(var(--details-size-title) - var(--mobile-text-step));
+  }
+
+  #details .section-subtitle,
+  #details #detailsVenue {
+    color: var(--details-color-lead);
+    font-family: var(--details-font-lead), serif;
+    font-style: var(--details-font-lead-style, normal);
+    font-size: calc(var(--details-size-lead) - var(--mobile-text-step));
+  }
+
+  #details p,
+  #details .organizer-contact,
+  #details #detailsAddress,
+  #details #mapText,
+  #details #mapContact {
+    color: var(--details-color-body);
+    font-family: var(--details-font-body), sans-serif;
+    font-style: var(--details-font-body-style, normal);
+    font-size: calc(var(--details-size-body) - var(--mobile-text-step));
+  }
+
+  #dresscode {
+    background-color: var(--dresscode-bg);
+    color: var(--dresscode-color-body);
+  }
+
+  #dresscode .section-title {
+    color: var(--dresscode-color-title);
+    font-family: var(--dresscode-font-title), serif;
+    font-style: var(--dresscode-font-title-style, normal);
+    font-size: calc(var(--dresscode-size-title) - var(--mobile-text-step));
+  }
+
+  #dresscode p,
+  #dresscode #dresscodeText {
+    color: var(--dresscode-color-body);
+    font-family: var(--dresscode-font-body), sans-serif;
+    font-style: var(--dresscode-font-body-style, normal);
+    font-size: calc(var(--dresscode-size-body) - var(--mobile-text-step));
+  }
+
+  #timeline {
+    background-color: var(--timeline-bg);
+    color: var(--timeline-color-body);
+  }
+
+  #timeline .section-title {
+    color: var(--timeline-color-title);
+    font-family: var(--timeline-font-title), serif;
+    font-style: var(--timeline-font-title-style, normal);
+    font-size: calc(var(--timeline-size-title) - var(--mobile-text-step));
+  }
+
+  #timeline .timeline-item strong {
+    color: var(--timeline-color-lead);
+    font-family: var(--timeline-font-lead), sans-serif;
+    font-style: var(--timeline-font-lead-style, normal);
+    font-size: calc(var(--timeline-size-lead) - var(--mobile-text-step));
+  }
+
+  #timeline .timeline-item span {
+    color: var(--timeline-color-body);
+    font-family: var(--timeline-font-body), sans-serif;
+    font-style: var(--timeline-font-body-style, normal);
+    font-size: calc(var(--timeline-size-body) - var(--mobile-text-step));
+  }
+
+  #organization {
+    background-color: var(--organization-bg);
+    color: var(--organization-color-body);
+  }
+
+  #organization .section-title {
+    color: var(--organization-color-title);
+    font-family: var(--organization-font-title), serif;
+    font-style: var(--organization-font-title-style, normal);
+    font-size: calc(var(--organization-size-title) - var(--mobile-text-step));
+  }
+
+  #organization p,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids {
+    color: var(--organization-color-body);
+    font-family: var(--organization-font-body), sans-serif;
+    font-style: var(--organization-font-body-style, normal);
+    font-size: calc(var(--organization-size-body) - var(--mobile-text-step));
+  }
+
+  #rsvp {
+    background-color: var(--rsvp-bg);
+    color: var(--rsvp-color-body);
+  }
+
+  #rsvp .section-title,
+  #rsvp #rsvpTitle {
+    color: var(--rsvp-color-title);
+    font-family: var(--rsvp-font-title), serif;
+    font-style: var(--rsvp-font-title-style, normal);
+    font-size: calc(var(--rsvp-size-title) - var(--mobile-text-step));
+  }
+
+  #rsvp label,
+  #rsvp p,
+  #rsvp input,
+  #rsvp select,
+  #rsvp textarea,
+  #rsvpForm,
+  #rsvp .field-counter {
+    color: var(--rsvp-color-body);
+    font-family: var(--rsvp-font-body), sans-serif;
+    font-style: var(--rsvp-font-body-style, normal);
+    font-size: calc(var(--rsvp-size-body) - var(--mobile-text-step));
+  }
+
+  #rsvp .form-message,
+  #rsvp #formMessage {
+    font-family: "EB Garamond", serif !important;
+    font-size: 21px !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+  }
+
+  footer.final.final-scene {
+    overflow: hidden;
+    background: var(--hero-bg);
+  }
+
+  footer.final.final-scene #finalText,
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature {
+    color: var(--hero-color-heading);
+    font-family: var(--final-font-heading), serif;
+    font-style: var(--final-font-heading-style, italic);
+    font-size: calc(var(--final-size-heading) - var(--mobile-text-step));
+    text-shadow: var(--hero-text-shadow);
+  }
+
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature {
+    color: var(--hero-color-lead);
+  }
+
+  /* Референс: цельная лента, плавные переходы, акцентная типографика */
+  .content-main {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.2rem 0 1rem;
+  }
+
+  .content-column .section,
+  footer.final {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+    padding: 2.9rem 0 2.9rem;
+  }
+
+  .content-column .section-inner {
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 0.2rem 0;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .content-column .section-title,
+  #rsvp .section-title,
+  #rsvp #rsvpTitle,
+  #details .section-subtitle,
+  #details #detailsVenue {
+    letter-spacing: normal;
+  }
+
+  .content-column .section-title::after {
+    width: min(86%, 320px);
+    opacity: 0.55;
+  }
+
+  .content-column .section-inner > p,
+  .content-column .section-text,
+  #inviteMessage #heroText,
+  #dresscode #dresscodeText,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids,
+  #details #detailsAddress,
+  #details #mapText,
+  #details .organizer-contact,
+  #details #mapContact {
+    line-height: 1.55;
+  }
+
+  #inviteMessage,
+  #details,
+  #dresscode,
+  #timeline,
+  #organization,
+  #rsvp,
+  footer.final {
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(245, 243, 234, 0.035),
+        rgba(245, 243, 234, 0.015)
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.02)
+      );
+  }
+
+  #inviteMessage:not(:last-child),
+  #details:not(:last-child),
+  #dresscode:not(:last-child),
+  #timeline:not(:last-child),
+  #organization:not(:last-child),
+  #rsvp:not(:last-child) {
+    padding-bottom: 2.35rem;
+  }
+
+  #details::before,
+  #dresscode::before,
+  #timeline::before,
+  #organization::before,
+  #rsvp::before,
+  footer.final::before {
+    content: "";
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245, 248, 238, 0.46), transparent);
+    pointer-events: none;
+  }
+
+  #inviteMessage::after,
+  #details::after,
+  #dresscode::after,
+  #timeline::after,
+  #organization::after,
+  #rsvp::after {
+    content: "";
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245, 248, 238, 0.42), transparent);
+    pointer-events: none;
+  }
+
+  .timeline-list {
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  #timeline .program-list.timeline-list {
+    padding-left: 1.5em;
+    padding-right: 0;
+    margin: 0;
+  }
+
+  #timeline .timeline-item {
+    position: relative;
+    display: list-item;
+  }
+
+  #timeline .timeline-item-row {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    align-items: start;
+    gap: 0.35rem;
+    padding: 0;
+  }
+
+  #timeline .timeline-item::after {
+    content: "";
+    position: absolute;
+    left: 54px;
+    top: 0.25rem;
+    bottom: -1.15rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--timeline-line-color) 72%, transparent),
+      color-mix(in srgb, var(--timeline-line-color) 18%, transparent)
+    );
+  }
+
+  #timeline .timeline-item:last-child::after {
+    display: none;
+  }
+
+  #timeline .timeline-item strong {
+    position: relative;
+    padding-right: 0.2rem;
+  }
+
+  /* Палитра: одна горизонтальная линия, равный шаг */
+  .palette,
+  .palette--fabric-photo {
+    --fabric-size: 44px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: var(--palette-gap, 12px) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    grid-template-columns: none !important;
+  }
+
+  .palette-item,
+  .palette-item--fabric-photo {
+    width: var(--fabric-size) !important;
+    height: var(--fabric-size) !important;
+    min-width: var(--fabric-size) !important;
+    min-height: var(--fabric-size) !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+    align-self: center !important;
+  }
+
+  .palette-item-label {
+    display: none;
+  }
+}
+
+/* Телефон */
+@media (max-width: 768px) {
+  .theme-panel {
+    top: auto;
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px));
+    width: min(290px, calc(100% - 24px));
+  }
+
+  .theme-panel-body {
+    max-height: min(78vh, calc(100dvh - 6rem));
+  }
+
+  .theme-transfer-block {
+    position: static;
+    background: rgba(249, 246, 240, 0.98);
+    box-shadow: none;
+  }
+
+  .theme-import-label,
+  #themeExportBtn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preloader {
+    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+      env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  }
+
+  .hero {
+    min-height: 100dvh;
+    min-height: 100svh;
+    padding: max(2rem, env(safe-area-inset-top, 0px)) max(0.85rem, env(safe-area-inset-right, 0px))
+      max(1.5rem, env(safe-area-inset-bottom, 0px)) max(0.85rem, env(safe-area-inset-left, 0px));
+  }
+
+  .hero-content {
+    padding: 1.25rem 0 0.5rem;
+  }
+
+  #heroSection h1 {
+    max-width: 100%;
+    font-size: clamp(
+      1.7rem,
+      9.5vw,
+      calc(var(--hero-size-heading) - var(--mobile-text-step))
+    );
+  }
+
+  #heroSection .hero-kicker {
+    font-size: calc(var(--hero-size-kicker) - var(--mobile-text-step));
+  }
+
+  #heroSection .hero-date {
+    font-size: calc(var(--hero-size-lead) - var(--mobile-text-step));
+  }
+
+  .countdown {
+    max-width: 100%;
+  }
+
+  .countdown div {
+    padding: 0 clamp(0.65rem, 4vw, 1rem);
+  }
+
+  .countdown div:not(:first-child)::before {
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
+  }
+
+  .countdown span {
+    font-size: clamp(1.85rem, 9vw, 2.5rem);
+    letter-spacing: normal;
+  }
+
+  .countdown small {
+    margin-top: 0.35rem;
+    font-size: clamp(0.48rem, 2.2vw, 0.56rem);
+    letter-spacing: 0.12em;
+  }
+
+  .hero-beam {
+    filter: blur(36px);
+  }
+
+  .section {
+    padding: 2.6rem 0 2.6rem;
+  }
+
+  .content-column .section-inner {
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 1.7rem));
+    margin: 0 auto;
+    padding: 0.1rem 0;
+    text-align: left;
+  }
+
+  #timeline {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .timeline-item-row {
+    grid-template-columns: 50px 1fr;
+    gap: 0.3rem;
+  }
+
+  .hero .btn,
+  main .btn,
+  .content-column .btn,
+  #rsvpForm .rsvp-submit {
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
+    min-width: min(260px, 100%);
+    min-height: var(--site-btn-min-height, 3rem);
+    box-sizing: border-box;
+  }
+
+  #rsvpForm .rsvp-submit {
+    width: auto;
+    justify-self: start;
+    align-self: flex-start;
+  }
+
+  .palette,
+  .palette--fabric-photo {
+    --fabric-size: 40px;
+  }
+
+  .organizer-contact,
+  #details p,
+  #mapText {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Узкие экраны */
+@media (max-width: 480px) {
+  .content-main {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 0.35rem;
+  }
+
+  .content-column .section-inner {
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 1.5rem));
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+  }
+
+  #details::before,
+  #dresscode::before,
+  #timeline::before,
+  #organization::before,
+  #rsvp::before,
+  footer.final::before,
+  #inviteMessage::after,
+  #details::after,
+  #dresscode::after,
+  #timeline::after,
+  #organization::after,
+  #rsvp::after {
+    left: 18px;
+    right: 18px;
+  }
+
+  #timeline {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .timeline-item-row {
+    grid-template-columns: 48px 1fr;
+    gap: 0.25rem;
+  }
+
+  .palette,
+  .palette--fabric-photo {
+    --fabric-size: 38px;
+    gap: 10px !important;
+  }
+
+  .preloader-monogram {
+    font-size: clamp(1.85rem, 11vw, 2.75rem);
+  }
+
+  .theme-panel-toggle {
+    font-size: 13px;
+    padding: 0.55rem 0.65rem;
+  }
+}
+
+/* --- Mobile redesign v2: цельная лента на всю ширину экрана --- */
+@media (max-width: 1024px) {
+  html {
+    background: var(--linen);
+  }
+
+  .content-layout {
+    width: 100%;
+    max-width: 100%;
+    background: var(--linen);
+  }
+
+  .content-column {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .content-main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    gap: 0;
+  }
+
+  .content-column .section,
+  footer.final {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background-image: none;
+    overflow: hidden;
+  }
+
+  .content-column .section::before,
+  .content-column .section::after,
+  footer.final::before,
+  footer.final::after {
+    display: none;
+  }
+
+  .content-column .section-inner,
+  footer.final .section-inner {
+    width: 100%;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 1.5rem));
+    margin: 0 auto;
+    padding: 1.25rem 0;
+    text-align: left;
+  }
+
+  #inviteMessage {
+    background: var(--invite-bg);
+  }
+
+  #details {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--details-bg);
+  }
+
+  #details .section-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  #dresscode {
+    background: var(--dresscode-bg);
+  }
+
+  #timeline {
+    background: var(--timeline-bg);
+  }
+
+  #organization {
+    background: var(--organization-bg);
+  }
+
+  #rsvp {
+    background: var(--rsvp-bg);
+  }
+
+  footer.final:not(.final-scene) {
+    background: var(--final-bg);
+  }
+
+  footer.final.final-scene {
+    background: var(--hero-bg);
+  }
+
+  .content-column .section-title,
+  #rsvp .section-title,
+  #rsvp #rsvpTitle,
+  #details .section-subtitle,
+  #details #detailsVenue {
+    letter-spacing: normal;
+  }
+
+  /* Цвета секций — только из переменных панели (см. блок выше), без жёстких #hex */
+
+  #inviteMessage .section-title {
+    color: var(--invite-color-title);
+  }
+
+  #inviteMessage .section-text,
+  #inviteMessage #heroText {
+    color: var(--invite-color-body);
+  }
+
+  #timeline .section-title {
+    color: var(--timeline-color-title);
+  }
+
+  #timeline .timeline-item strong {
+    color: var(--timeline-color-lead);
+  }
+
+  #timeline .timeline-item span {
+    color: var(--timeline-color-body);
+  }
+
+  #details .section-title,
+  #details .section-subtitle,
+  #details #detailsVenue {
+    color: var(--details-color-title);
+  }
+
+  #details .section-subtitle,
+  #details #detailsVenue {
+    color: var(--details-color-lead);
+  }
+
+  #details p,
+  #details .organizer-contact,
+  #details #detailsAddress,
+  #details #mapText,
+  #details #mapContact {
+    color: var(--details-color-body);
+    line-height: 1.58;
+  }
+
+  #dresscode .section-title {
+    color: var(--dresscode-color-title);
+  }
+
+  #dresscode p,
+  #dresscode #dresscodeText {
+    color: var(--dresscode-color-body);
+    line-height: 1.58;
+  }
+
+  #organization .section-title {
+    color: var(--organization-color-title);
+  }
+
+  #organization p,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids {
+    color: var(--organization-color-body);
+    line-height: 1.58;
+  }
+
+  #rsvp .section-title,
+  #rsvp #rsvpTitle {
+    color: var(--rsvp-color-title);
+    font-family: var(--rsvp-font-title), serif;
+    font-style: var(--rsvp-font-title-style, normal);
+    font-size: calc(var(--rsvp-size-title) - var(--mobile-text-step));
+  }
+
+  #rsvp label,
+  #rsvp p,
+  #rsvp #rsvpIntro,
+  #rsvp .field-counter {
+    color: var(--rsvp-color-body);
+    font-family: var(--rsvp-font-body), sans-serif;
+    font-style: var(--rsvp-font-body-style, normal);
+    font-size: calc(var(--rsvp-size-body) - var(--mobile-text-step));
+    line-height: 1.58;
+  }
+
+  #rsvp .form-message,
+  #rsvp #formMessage {
+    font-family: "EB Garamond", serif !important;
+    font-size: 21px !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+  }
+
+  footer.final.final-scene #finalText,
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature {
+    color: var(--hero-color-heading);
+    text-shadow: var(--hero-text-shadow);
+  }
+
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature {
+    color: var(--hero-color-lead);
+  }
+
+  .content-column .section-title::after {
+    width: 100%;
+    left: 0;
+    transform: none;
+    opacity: 0.4;
+  }
+
+  #timeline .timeline-item-row {
+    grid-template-columns: 56px 1fr;
+    gap: 0.4rem;
+    padding: 0;
+  }
+
+  #timeline .timeline-item::after {
+    left: 56px;
+    top: 0.3rem;
+    bottom: -0.62rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--timeline-line-color) 76%, transparent),
+      color-mix(in srgb, var(--timeline-line-color) 24%, transparent)
+    );
+  }
+
+  .palette,
+  .palette--fabric-photo {
+    --fabric-size: 36px;
+    gap: 10px !important;
+  }
+
+  #rsvpForm input,
+  #rsvpForm select,
+  #rsvpForm textarea {
+    --rsvp-field-radius: 14px;
+    background-color: transparent;
+    background-image: var(--rsvp-field-fill);
+    border-color: color-mix(in srgb, var(--content-band-ink, #ebf7b0) 28%, transparent);
+    font-family: var(--rsvp-field-font, "Open Sans"), "Open Sans", sans-serif;
+    font-size: var(--rsvp-field-size, 1.0625rem);
+    min-height: var(--rsvp-control-min-height, 2.85rem);
+    padding: 0.7rem 1rem;
+  }
+
+  #rsvpForm select {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23ebf7b0' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+      var(--rsvp-field-fill);
+    background-repeat: no-repeat, no-repeat;
+    background-position: right 0.95rem center, 0 0;
+    background-size: 12px 8px, 100% 100%;
+  }
+
+  #rsvpForm .rsvp-comment {
+    --rsvp-field-radius: 14px;
+    min-height: 5.5rem;
+  }
+}
+
+/* Layout A на мобиле: однотонные полосы, без фото/открытки */
+@media (max-width: 1024px) {
+  html.layout-unified,
+  html.layout-unified body {
+    background: var(--content-band-bg, #3a5f28);
+  }
+
+  html.layout-unified .content-layout {
+    background: var(--content-band-bg, #3a5f28) !important;
+  }
+
+  html.layout-unified .photo-column,
+  html.layout-unified .content-bg-img,
+  html.layout-unified .content-postcard-img {
+    display: none !important;
+  }
+
+  html.layout-unified .content-column,
+  html.layout-unified .content-main {
+    background: var(--content-band-bg, #3a5f28) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html.layout-unified .content-main .section,
+  html.layout-unified #inviteMessage,
+  html.layout-unified #details,
+  html.layout-unified #dresscode,
+  html.layout-unified #timeline,
+  html.layout-unified #organization,
+  html.layout-unified #rsvp {
+    background: var(--content-band-bg, #3a5f28) !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: var(--section-block-gap, 2.8rem) 0 !important;
+  }
+
+  html.layout-unified #details .section-title,
+  html.layout-unified #details .section-subtitle,
+  html.layout-unified #details p,
+  html.layout-unified #details .organizer-contact,
+  html.layout-unified #timeline .section-title,
+  html.layout-unified #timeline .timeline-item strong,
+  html.layout-unified #timeline .timeline-item span,
+  html.layout-unified #rsvp .section-title,
+  html.layout-unified #rsvp label,
+  html.layout-unified #rsvp p,
+  html.layout-unified #rsvp .field-counter,
+  html.layout-unified #rsvp .form-message,
+  html.layout-unified #inviteMessage .section-title,
+  html.layout-unified #inviteMessage .section-text,
+  html.layout-unified #dresscode .section-title,
+  html.layout-unified #dresscode p,
+  html.layout-unified #organization .section-title,
+  html.layout-unified #organization p {
+    color: var(--content-band-ink, #ebf7b0) !important;
+  }
+
+  html.layout-unified #details .details-venue-layer {
+    opacity: 0.2;
+  }
+
+  html.layout-unified #dresscode .dresscode-attire-tile {
+    background-size: auto min(18rem, 70%);
+    background-position: center 55%;
+  }
+
+  html.layout-unified .content-main .section .section-inner,
+  html.layout-unified footer.final .section-inner {
+    width: 100% !important;
+    max-width: min(var(--site-text-column, 720px), calc(100% - 2rem)) !important;
+    margin: 0 auto !important;
+    padding-inline: 0 !important;
+    text-align: left !important;
+  }
+
+  html.layout-unified .content-column .section-inner > p,
+  html.layout-unified .content-column .section-text,
+  html.layout-unified .content-column .section-title,
+  html.layout-unified .content-column .section-subtitle,
+  html.layout-unified #inviteMessage #heroText,
+  html.layout-unified #inviteMessage .section-text,
+  html.layout-unified #inviteMessage .section-title,
+  html.layout-unified #dresscode #dresscodeText,
+  html.layout-unified #dresscode p,
+  html.layout-unified #dresscode .section-title,
+  html.layout-unified #organization #orgDrinks,
+  html.layout-unified #organization #orgKiss,
+  html.layout-unified #organization #orgKids,
+  html.layout-unified #organization p,
+  html.layout-unified #organization .section-title,
+  html.layout-unified #details #detailsAddress,
+  html.layout-unified #details #mapText,
+  html.layout-unified #details .organizer-contact,
+  html.layout-unified #details #mapContact,
+  html.layout-unified #details .section-subtitle,
+  html.layout-unified #details .section-title,
+  html.layout-unified #timeline .section-title,
+  html.layout-unified #timeline .timeline-item strong,
+  html.layout-unified #timeline .timeline-item span,
+  html.layout-unified #rsvp .section-title,
+  html.layout-unified #rsvp .section-text,
+  html.layout-unified footer.final #finalText,
+  html.layout-unified footer.final .final-signature {
+    text-align: left !important;
+    text-align-last: auto !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: none;
+    -webkit-hyphens: none;
+    word-break: normal;
+  }
+
+  html.layout-unified #inviteMessage .section-title::after,
+  html.layout-unified #details .section-title::after,
+  html.layout-unified #timeline .section-title::after,
+  html.layout-unified #organization .section-title::after,
+  html.layout-unified #dresscode .section-title::after,
+  html.layout-unified #rsvp .section-title::after {
+    left: 0;
+    right: auto;
+    transform: none;
+    margin-inline: 0;
+  }
+}
+
+/* ——— Телефон ≤768px: орг. моменты / анкета / мягкий переход фона ——— */
+@media (max-width: 768px) {
+  /* 1. Организационные моменты: читаемые абзацы, без наложения */
+  #organization .organizational-moments {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #organization .organizational-moments > .text-size-shell,
+  #organization .text-size-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  #organization .organizational-moments p,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 0 16px !important;
+    padding: 0 !important;
+    line-height: 1.7 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+
+  #organization #orgKids,
+  #organization .organizational-moments p:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
+  /* 2. Анкета: убрать лишнее между полями и кнопкой, сжать оболочки */
+  #rsvpForm .rsvp-field-shell,
+  #rsvpForm .text-size-shell,
+  #rsvp .text-size-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #rsvpForm .rsvp-field-shell--comment {
+    min-height: 5.5rem !important;
+    height: auto !important;
+  }
+
+  #rsvpForm .rsvp-field-shell input,
+  #rsvpForm .rsvp-field-shell select,
+  #rsvpForm .rsvp-field-shell textarea,
+  #rsvpForm .rsvp-select,
+  #rsvpForm .rsvp-select-trigger {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Счётчик символов — компактно / не раздувает блок */
+  #rsvpForm .field-counter,
+  #rsvp #commentCounter {
+    display: block;
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    margin: 0.15rem 0 0 !important;
+    opacity: 0.65;
+  }
+
+  /* Пустое сообщение об отправке не занимает место и не «висит» текстом */
+  #rsvp #formMessage:empty,
+  #rsvpForm .form-message:empty {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+
+  #rsvp #formMessage:not(:empty),
+  #rsvpForm .form-message:not(:empty) {
+    display: block !important;
+    font-family: "EB Garamond", serif !important;
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+    font-weight: 400 !important;
+    margin: 0.5rem 0 0 !important;
+    max-width: 100% !important;
+  }
+
+  #rsvpPartnerField[hidden] {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #rsvpForm .rsvp-select-menu[hidden] {
+    display: none !important;
+  }
+
+  /* 3. Плавный переход размытого hero → фон ленты (без резкой границы) */
+  html.layout-unified {
+    --hero-to-band-fade: clamp(12rem, 50vh, 26rem);
+  }
+
+  html.layout-unified .hero-media-img {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0, 0, 0, 0.85) 68%,
+      rgba(0, 0, 0, 0.35) 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0, 0, 0, 0.85) 68%,
+      rgba(0, 0, 0, 0.35) 88%,
+      transparent 100%
+    );
+  }
+
+  html.layout-unified .hero::before {
+    height: var(--hero-to-band-fade) !important;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 8%, transparent) 22%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 28%, transparent) 48%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 58%, transparent) 72%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 88%, transparent) 90%,
+      var(--content-band-bg, #4a5620) 100%
+    ) !important;
+  }
+
+  html.layout-unified .content-layout::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: min(7rem, 18vh);
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 55%, transparent) 0%,
+      transparent 100%
+    );
+  }
+
+  /* Футер: чёткое фото; размытие/заливка только на узкой границе с лентой */
+  footer.final.final-scene .hero-media-img {
+    filter: saturate(var(--hero-image-saturate, 1)) contrast(var(--hero-image-contrast, 1));
+    transform: scale(1.12);
+  }
+
+  html.layout-unified footer.final.final-scene::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    /* Узкая зона перехода — не перекрывает основную часть фото */
+    height: clamp(2.75rem, 11vh, 5rem) !important;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--content-band-bg, #4a5620) 0%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 55%, transparent) 45%,
+      color-mix(in srgb, var(--content-band-bg, #4a5620) 12%, transparent) 78%,
+      transparent 100%
+    ) !important;
+  }
+
+  footer.final.final-scene .final-scene-overlay {
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 38%, rgba(118, 145, 98, 0.05), transparent 68%),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--content-band-bg, #4a5620) 14%, transparent) 0%,
+        transparent 16%,
+        var(--hero-overlay-top, rgba(20, 28, 14, 0.28)) 48%,
+        var(--hero-overlay-bottom, rgba(20, 28, 14, 0.5)) 100%
+      );
+  }
+}
+
+/* ——— Телефон ≤768px: более лёгкая типографика (как в Wix Elevated) ——— */
+@media (max-width: 768px) {
+  :root {
+    --mobile-title-size: 30px;
+    --mobile-body-size: 17px;
+    --mobile-ui-size: 16px;
+    --mobile-body-leading: 1.55;
+  }
+
+  /* Заголовки разделов */
+  .content-column .section-title,
+  html.layout-unified .content-column .section-title,
+  #inviteMessage .section-title,
+  #details .section-title,
+  #dresscode .section-title,
+  #timeline .section-title,
+  #organization .section-title,
+  #rsvp .section-title,
+  #rsvp #rsvpTitle,
+  #detailsTitle,
+  #timelineTitle,
+  #dresscodeTitle,
+  #organizationTitle {
+    font-family: "Great Vibes", cursive !important;
+    font-size: var(--mobile-title-size) !important;
+    line-height: 1.25 !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+  }
+
+  /* Основной текст / абзацы */
+  .content-column .section-text,
+  .content-column .main-text,
+  .content-column .details-location-body,
+  .content-column .section-inner > p,
+  #inviteMessage .section-text,
+  #inviteMessage #heroText,
+  #details .details-location-body,
+  #details .location-copy,
+  #details .location-copy > p,
+  #detailsLocationBody,
+  #detailsLocationBody > p,
+  #dresscode #dresscodeText,
+  #organization .main-text,
+  #organization #orgDrinks,
+  #organization #orgKiss,
+  #organization #orgKids,
+  #organization .organizational-moments p,
+  #rsvp .section-text,
+  #rsvp #rsvpIntro,
+  #rsvp label,
+  #rsvp #rsvpNameLabel,
+  #rsvp #rsvpAttendanceLabel,
+  #rsvp #rsvpPartnerNameLabel,
+  #rsvp #rsvpCommentLabel,
+  #timeline .timeline-item span,
+  #timeline .timeline-item strong,
+  html.layout-unified .content-column .section-text,
+  html.layout-unified .content-column .main-text,
+  html.layout-unified #organization p,
+  html.layout-unified #rsvp label,
+  html.layout-unified #rsvp p {
+    font-family: "EB Garamond", serif !important;
+    font-size: var(--mobile-body-size) !important;
+    line-height: var(--mobile-body-leading) !important;
+    font-weight: 400 !important;
+  }
+
+  /* Подзаголовки локации */
+  #details .section-subtitle,
+  #details #detailsVenue {
+    font-size: var(--mobile-body-size) !important;
+    line-height: var(--mobile-body-leading) !important;
+  }
+
+  /* Анкета: поля и кнопка */
+  #rsvpForm,
+  #rsvpForm input,
+  #rsvpForm select,
+  #rsvpForm textarea,
+  #rsvpForm .rsvp-select-trigger,
+  #rsvpForm .rsvp-select-option,
+  #rsvpForm .field-counter,
+  #rsvpForm label > span,
+  html.layout-unified #rsvpForm input,
+  html.layout-unified #rsvpForm select,
+  html.layout-unified #rsvpForm textarea {
+    font-family: "EB Garamond", serif !important;
+    font-size: var(--mobile-ui-size) !important;
+    line-height: 1.45 !important;
+  }
+
+  #rsvpForm .rsvp-submit.btn,
+  #rsvpForm button.rsvp-submit,
+  html.layout-unified #rsvpForm .rsvp-submit,
+  html.layout-unified #rsvpForm .btn.rsvp-submit,
+  .location-routes > a.location-route-btn.btn,
+  #routeLink.location-route-btn,
+  #transitRouteLink.location-route-btn {
+    font-family: "EB Garamond", serif !important;
+    font-size: var(--mobile-ui-size) !important;
+    line-height: 1.3 !important;
+    font-weight: 400 !important;
+  }
+
+  #rsvp #formMessage:not(:empty),
+  #rsvpForm .form-message:not(:empty) {
+    font-size: var(--mobile-ui-size) !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Прощание — базовый размер; финальный блок ниже задаёт 22px */
+  footer.final #finalText,
+  footer.final .final-signature,
+  footer.final #finalSignature,
+  footer.final.final-scene #finalText,
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature {
+    font-size: 22px !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* ——— Телефон ≤768px: компактные кнопки + меньшие отступы между секциями ——— */
+@media (max-width: 768px) {
+  /* Меньше воздуха между разделами */
+  .content-column .section,
+  footer.final,
+  html.layout-unified .content-main .section,
+  html.layout-unified #inviteMessage,
+  html.layout-unified #details,
+  html.layout-unified #dresscode,
+  html.layout-unified #timeline,
+  html.layout-unified #organization,
+  html.layout-unified #rsvp {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  #timeline {
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .content-column .section-inner,
+  html.layout-unified .content-main .section .section-inner,
+  html.layout-unified footer.final .section-inner {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  /* Единое семейство кнопок: маршрут + анкета */
+  .location-routes {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .location-routes > a.location-route-btn.btn,
+  .location-routes > a.location-route-btn.btn:link,
+  .location-routes > a.location-route-btn.btn:visited,
+  #routeLink.location-route-btn,
+  #transitRouteLink.location-route-btn,
+  #transitRouteLink.location-route-btn.location-route-btn--wide,
+  #rsvpForm .rsvp-submit.btn,
+  #rsvpForm button.rsvp-submit,
+  html.layout-unified .location-routes > a.location-route-btn.btn,
+  html.layout-unified #rsvpForm .rsvp-submit.btn,
+  html.layout-unified #rsvpForm button.rsvp-submit,
+  html.layout-unified #routeLink.location-route-btn,
+  html.layout-unified #transitRouteLink.location-route-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 44px !important;
+    padding: 10px 20px !important;
+    box-sizing: border-box !important;
+    border-radius: 999px !important;
+    font-family: "EB Garamond", serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    align-self: stretch !important;
+  }
+
+  #rsvpForm .rsvp-submit,
+  #rsvpForm .btn.rsvp-submit {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* ——— Телефон ≤768px: плотнее секции + прощание как заголовок ——— */
+@media (max-width: 768px) {
+  :root {
+    --section-block-gap: 18px;
+    --text-title-gap-top: 12px;
+    --text-title-gap-bottom: 8px;
+    --text-para-gap: 12px;
+  }
+
+  .content-column .section,
+  footer.final,
+  .section,
+  html.layout-unified .content-main .section,
+  html.layout-unified #inviteMessage,
+  html.layout-unified #details,
+  html.layout-unified #dresscode,
+  html.layout-unified #timeline,
+  html.layout-unified #organization,
+  html.layout-unified #rsvp {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  #timeline {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+
+  .content-column .section-inner,
+  html.layout-unified .content-main .section .section-inner,
+  html.layout-unified footer.final .section-inner {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .content-column .section-inner > .section-title,
+  .content-column .section-inner > .text-size-shell:first-child > .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Прощание — меньше заголовка раздела; выравнивание по центру (только мобилка) */
+  footer.final.final-scene .section-inner,
+  html.layout-unified footer.final.final-scene .section-inner {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  footer.final #finalText,
+  footer.final .final-signature,
+  footer.final #finalSignature,
+  footer.final.final-scene #finalText,
+  footer.final.final-scene .final-signature,
+  footer.final.final-scene #finalSignature,
+  html.layout-unified footer.final #finalText,
+  html.layout-unified footer.final .final-signature,
+  html.layout-unified footer.final #finalSignature,
+  footer.final #finalText span,
+  footer.final .final-signature span,
+  footer.final #finalSignature span {
+    font-family: "Great Vibes", cursive !important;
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+    text-align-last: center !important;
+  }
+}
+
+/* ——— Телефон ≤768px: заметнее лучи ——— */
+@media (max-width: 768px) {
+  html.layout-unified .site-light-ambience .hero-beam {
+    opacity: 0.72;
+    filter: blur(52px) saturate(1.45) brightness(1.35);
+  }
+
+  html.layout-unified .site-light-ambience .hero-beam--right,
+  html.layout-unified .site-light-ambience .hero-beam--left {
+    background: linear-gradient(
+      108deg,
+      transparent 0%,
+      transparent 18%,
+      rgba(255, 242, 190, 0.12) 32%,
+      rgba(255, 232, 165, 0.28) 42%,
+      rgba(255, 246, 210, 0.52) 50%,
+      rgba(255, 232, 165, 0.28) 58%,
+      rgba(255, 242, 190, 0.12) 68%,
+      transparent 82%,
+      transparent 100%
+    );
+  }
+
+  html.layout-unified .site-light-ambience .hero-beam--cross-a,
+  html.layout-unified .site-light-ambience .hero-beam--cross-b {
+    background: linear-gradient(
+      125deg,
+      transparent 0%,
+      transparent 20%,
+      rgba(255, 242, 190, 0.1) 34%,
+      rgba(255, 232, 165, 0.26) 44%,
+      rgba(255, 246, 210, 0.48) 50%,
+      rgba(255, 232, 165, 0.26) 56%,
+      rgba(255, 242, 190, 0.1) 66%,
+      transparent 80%,
+      transparent 100%
+    );
+  }
+
+  /* На случай классического layout без site-light-ambience */
+  .hero .hero-beam,
+  footer.final.final-scene .hero-beam {
+    opacity: 0.68;
+    filter: blur(52px) saturate(1.4) brightness(1.3);
+  }
+}

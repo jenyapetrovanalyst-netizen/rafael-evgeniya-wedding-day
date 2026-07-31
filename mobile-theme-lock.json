@@ -1,0 +1,304 @@
+{
+  "version": 3,
+  "scope": "site-theme-lock",
+  "lockedAt": "2026-07-31T21:12:05.000Z",
+  "comment": "Freeze 2026-08-01: desktop+mobile visual state. Source: mobile-theme-lock-2026-07-31.json (desktop & mobile exports identical). Farewell editor sizes 30px/26px; mobile farewell 22px via styles-mobile.css. Broken *size* 42rem/21rem normalized to px.",
+  "theme": {
+    "--linen": "#4b5620",
+    "--dusty-rose": "#c0d656",
+    "--button-text": "#4b5620",
+    "--timer-bg": "#363c0e",
+    "--timer-border": "#33380e",
+    "--timer-text": "#dee5d8",
+    "--timer-glass-opacity": "10",
+    "--brass": "#ffd6ef",
+    "--content-band-bg": "#4a5620",
+    "--content-band-ink": "#ebf7b0",
+    "--section-block-gap": "2rem",
+    "--hero-bg": "#363c0e",
+    "--hero-color-kicker": "#e3eadc",
+    "--hero-color-heading": "#f7f9f4",
+    "--hero-color-lead": "#e2eadc",
+    "--hero-font-kicker": "cormorant-regular",
+    "--hero-font-kicker-style": "normal",
+    "--hero-font-kicker-weight": "400",
+    "--hero-font-heading": "great-vibes",
+    "--hero-font-heading-style": "normal",
+    "--hero-font-heading-weight": "400",
+    "--hero-font-lead": "eb-regular",
+    "--hero-font-lead-style": "normal",
+    "--hero-font-lead-weight": "400",
+    "--hero-size-kicker": "2rem",
+    "--hero-size-heading": "5rem",
+    "--hero-size-lead": "1.60rem",
+    "--hero-text-shadow": "0px 0px 30px rgba(24, 32, 20, 0.5)",
+    "--invite-bg": "#000000",
+    "--invite-color-title": "#c0d656",
+    "--invite-color-body": "#e0e7db",
+    "--invite-align-title": "left",
+    "--invite-align-body": "left",
+    "--invite-font-title": "great-vibes",
+    "--invite-font-title-style": "normal",
+    "--invite-font-title-weight": "400",
+    "--invite-font-body": "eb-regular",
+    "--invite-font-body-style": "normal",
+    "--invite-font-body-weight": "400",
+    "--invite-size-title": "42px",
+    "--invite-size-body": "21px",
+    "--details-bg": "#404a0e",
+    "--details-color-title": "#c1d556",
+    "--details-color-lead": "#c0d656",
+    "--details-color-body": "#e2e9dc",
+    "--details-align-title": "left",
+    "--details-align-body": "left",
+    "--details-font-title": "great-vibes",
+    "--details-font-title-style": "normal",
+    "--details-font-title-weight": "400",
+    "--details-font-lead": "eb-regular",
+    "--details-font-lead-style": "normal",
+    "--details-font-lead-weight": "400",
+    "--details-font-body": "eb-regular",
+    "--details-font-body-style": "normal",
+    "--details-font-body-weight": "400",
+    "--details-size-title": "42px",
+    "--details-size-lead": "21px",
+    "--details-size-body": "21px",
+    "--details-venue-sketch-color": "#475b1b",
+    "--details-venue-sketch-opacity": "60",
+    "--timeline-bg": "#363c0e",
+    "--timeline-color-title": "#c3d456",
+    "--timeline-color-lead": "#c1d556",
+    "--timeline-color-body": "#e2e9dc",
+    "--timeline-align-title": "left",
+    "--timeline-align-body": "left",
+    "--timeline-dot-color": "#bdd15e",
+    "--timeline-line-color": "#465d1a",
+    "--timeline-font-title": "great-vibes",
+    "--timeline-font-title-style": "normal",
+    "--timeline-font-title-weight": "400",
+    "--timeline-font-lead": "eb-regular",
+    "--timeline-font-lead-style": "normal",
+    "--timeline-font-lead-weight": "400",
+    "--timeline-font-body": "eb-regular",
+    "--timeline-font-body-style": "normal",
+    "--timeline-font-body-weight": "400",
+    "--timeline-size-title": "42px",
+    "--timeline-size-lead": "21px",
+    "--timeline-size-body": "21px",
+    "--dresscode-bg": "#3a4513",
+    "--dresscode-color-title": "#c1d556",
+    "--dresscode-color-body": "#e0e7db",
+    "--dresscode-align-title": "left",
+    "--dresscode-align-body": "left",
+    "--dresscode-font-title": "great-vibes",
+    "--dresscode-font-title-style": "normal",
+    "--dresscode-font-title-weight": "400",
+    "--dresscode-font-body": "eb-regular",
+    "--dresscode-font-body-style": "normal",
+    "--dresscode-font-body-weight": "400",
+    "--dresscode-size-title": "42px",
+    "--dresscode-size-body": "21px",
+    "--dresscode-couple-opacity": "20",
+    "--organization-bg": "#404a0e",
+    "--organization-color-title": "#c1d556",
+    "--organization-color-body": "#e2e9dc",
+    "--organization-align-title": "left",
+    "--organization-align-body": "left",
+    "--organization-font-title": "great-vibes",
+    "--organization-font-title-style": "normal",
+    "--organization-font-title-weight": "400",
+    "--organization-font-body": "eb-regular",
+    "--organization-font-body-style": "normal",
+    "--organization-font-body-weight": "400",
+    "--organization-size-title": "42px",
+    "--organization-size-body": "21px",
+    "--rsvp-bg": "#363c0e",
+    "--rsvp-color-title": "#b9d055",
+    "--rsvp-color-body": "#c0d758",
+    "--rsvp-align-title": "left",
+    "--rsvp-align-body": "left",
+    "--rsvp-font-title": "great-vibes",
+    "--rsvp-font-title-style": "normal",
+    "--rsvp-font-title-weight": "400",
+    "--rsvp-font-body": "eb-regular",
+    "--rsvp-font-body-style": "normal",
+    "--rsvp-font-body-weight": "400",
+    "--rsvp-size-title": "42px",
+    "--rsvp-size-body": "21px",
+    "--rsvp-field-opacity": "20",
+    "--final-bg": "#363c0e",
+    "--final-color-heading": "#bed757",
+    "--final-align-heading": "center",
+    "--final-font-heading": "great-vibes",
+    "--final-font-heading-style": "normal",
+    "--final-font-heading-weight": "400",
+    "--final-size-heading": "42px",
+    "--final-align-heading-line": "0 auto"
+  },
+  "copy": {
+    "heroTitle": "Наша свадьба",
+    "heroDate": "12 сентября 2026",
+    "inviteKicker": "Дорогие друзья и родные!",
+    "inviteBody": "Мы рады пригласить вас на самый важный день в нашей жизни — свадьбу! \nЭтот день мы мечтаем провести в кругу самых близких. Мы очень надеемся, что этот день будет уютным, семейным и весёлым.",
+    "rsvpTitle": "Анкета гостя",
+    "rsvpIntro": "Пожалуйста, подтвердите ваше присутствие до 25 августа 2026 года."
+  },
+  "editor": {
+    "richCopy": {
+      "detailsTitle": "<div><span>Локация события</span></div>",
+      "detailsLocationBody": "<p>Свадебная площадка «Спарк», Московская область, городской округ Красногорск, координаты для навигатора: 55.802867, 37.281578.</p><p>Ближайшие станции метро — «Мякинино» и «Митино». От обеих станций до площадки на такси примерно 15–20 минут в зависимости от трафика. При желании можно добраться и на общественном транспорте: от станции МЦД «Пенягино» на автобусе № 209к до остановки «Госпиталь имени Вишневского» (время в пути около 20 минут), затем пешком примерно 10 минут до площадки.</p><p>Если вы заблудитесь в день свадьбы, позвоните по номеру: +7-900-520-12-72, Ульяна.</p>",
+      "inviteKicker": "Дорогие друзья и родные!",
+      "heroText": "Мы рады пригласить вас на самый важный день в нашей жизни — свадьбу!&nbsp;\nЭтот день мы мечтаем провести в кругу самых близких.&nbsp;Мы очень надеемся, что этот день будет уютным, семейным и весёлым.",
+      "taxiRouteLabel": "Построить маршрут на такси",
+      "finalText": "<span style=\"font-family: &quot;Great Vibes&quot;, cursive\">Спасибо, что вы с нами. До встречи 12 сентября.</span>",
+      "heroNames": "Рафаэль и Евгения",
+      "heroTitle": "НАША СВАДЬБА",
+      "heroDate": "12 СЕНТЯБРЯ 2026",
+      "organizationTitle": "Организационные моменты",
+      "finalText__style": "font-size: 30px !important",
+      "finalSignature": "<span style=\"font-family: &quot;Great Vibes&quot;, cursive\">Рафаэль и Евгения</span>",
+      "finalSignature__style": "font-size: 26px !important",
+      "rsvpTitle": "Анкета гостя"
+    },
+    "editableSizes": {
+      "heroTitle": {
+        "width": "720px",
+        "height": "68px"
+      },
+      "heroNames": {
+        "width": "720px",
+        "height": "116px"
+      },
+      "heroDate": {
+        "width": "720px",
+        "height": "53px"
+      },
+      "inviteKicker": {
+        "width": "721px",
+        "height": "52px"
+      },
+      "heroText": {
+        "width": "720px",
+        "height": "110px"
+      },
+      "detailsTitle": {
+        "width": "720px",
+        "height": "60px"
+      },
+      "detailsLocationBody": {
+        "width": "720px",
+        "height": "259px"
+      },
+      "timelineTitle": {
+        "width": "720px",
+        "height": "52px"
+      },
+      "dresscodeTitle": {
+        "width": "720px",
+        "height": "51px"
+      },
+      "dresscodeText": {
+        "width": "720px",
+        "height": "140px"
+      },
+      "organizationTitle": {
+        "width": "721px",
+        "height": "45px"
+      },
+      "orgDrinks": {
+        "width": "720px",
+        "height": "60px"
+      },
+      "orgKiss": {
+        "width": "720px",
+        "height": "76px"
+      },
+      "orgKids": {
+        "width": "720px",
+        "height": "106px"
+      },
+      "rsvpTitle": {
+        "width": "719px",
+        "height": "49px"
+      },
+      "rsvpIntro": {
+        "width": "720px",
+        "height": "50px"
+      },
+      "rsvpNameLabel": {
+        "width": "720px",
+        "height": "29px"
+      },
+      "rsvpAttendanceLabel": {
+        "width": "720px",
+        "height": "37px"
+      },
+      "rsvpCommentLabel": {
+        "width": "720px",
+        "height": "35px"
+      },
+      "submitBtn": {
+        "width": "260px",
+        "height": "48px"
+      },
+      "timelineTime0": {
+        "width": "82px",
+        "height": "27px"
+      },
+      "timelineEvent0": {
+        "width": "608px",
+        "height": "50px"
+      },
+      "timelineTime1": {
+        "width": "82px",
+        "height": "27px"
+      },
+      "timelineEvent1": {
+        "width": "608px",
+        "height": "50px"
+      },
+      "timelineTime2": {
+        "width": "82px",
+        "height": "27px"
+      },
+      "timelineEvent2": {
+        "width": "608px",
+        "height": "50px"
+      },
+      "timelineTime3": {
+        "width": "82px",
+        "height": "27px"
+      },
+      "timelineEvent3": {
+        "width": "608px",
+        "height": "50px"
+      },
+      "timelineTime4": {
+        "width": "82px",
+        "height": "27px"
+      },
+      "timelineEvent4": {
+        "width": "608px",
+        "height": "50px"
+      }
+    },
+    "fieldSizes": {
+      "name": {
+        "width": "720px",
+        "height": "47px"
+      },
+      "attendance": {
+        "width": "720px",
+        "height": "49px"
+      },
+      "comment": {
+        "width": "720px",
+        "height": "123px"
+      },
+      "partnerName": {
+        "width": "0px",
+        "height": "0px"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.DS_Store
+**/.DS_Store
+Thumbs.db
+Untitled
+*.log
+.idea/
+.vscode/
+*.local
+.env
+.env.*
+assets/Temy-VKR*.pdf

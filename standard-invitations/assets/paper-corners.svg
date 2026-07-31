@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#4a4540" stroke-width="0.55" stroke-linecap="round">
+  <!-- top-left -->
+  <path d="M6 18 L6 6 L18 6" />
+  <circle cx="6" cy="6" r="1.1" fill="#4a4540" stroke="none" />
+  <!-- top-right -->
+  <path d="M82 6 L94 6 L94 18" />
+  <circle cx="94" cy="6" r="1.1" fill="#4a4540" stroke="none" />
+  <!-- bottom-left -->
+  <path d="M6 82 L6 94 L18 94" />
+  <circle cx="6" cy="94" r="1.1" fill="#4a4540" stroke="none" />
+  <!-- bottom-right -->
+  <path d="M82 94 L94 94 L94 82" />
+  <circle cx="94" cy="94" r="1.1" fill="#4a4540" stroke="none" />
+</svg>
