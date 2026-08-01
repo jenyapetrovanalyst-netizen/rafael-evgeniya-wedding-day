@@ -2028,6 +2028,8 @@ updateCountdown();
 initWeddingMusic();
 initPreloader();
 initRevealAnimations();
+/* Старая подсказка Telegram могла остаться в кэше HTML — убираем из DOM */
+document.querySelectorAll(".tg-open-safari, #tgOpenSafari").forEach((node) => node.remove());
 initForm();
 initResizableBlocks();
 initThemePanel();

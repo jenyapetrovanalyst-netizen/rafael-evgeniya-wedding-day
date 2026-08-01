@@ -1808,3 +1808,16 @@
     animation: heroBeamCrossB var(--hero-beam-cycle, 20s) linear infinite !important;
   }
 }
+
+/* Защита от кэша Telegram: старая подсказка «Открыть» больше не показывается */
+.tg-open-safari,
+#tgOpenSafari {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}

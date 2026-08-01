@@ -23,6 +23,19 @@
   } catch {
     /* ignore */
   }
+
+  function removeLegacyTelegramHint() {
+    try {
+      document.querySelectorAll(".tg-open-safari, #tgOpenSafari").forEach((node) => node.remove());
+    } catch {
+      /* ignore */
+    }
+  }
+
+  removeLegacyTelegramHint();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", removeLegacyTelegramHint);
+  }
 })();
 
 (function applyStoredThemeEarly() {
