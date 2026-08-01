@@ -10,6 +10,21 @@
   }
 })();
 
+(function markTelegramWebView() {
+  try {
+    const ua = navigator.userAgent || "";
+    const isTelegram =
+      /Telegram/i.test(ua) ||
+      typeof window.TelegramWebviewProxy !== "undefined" ||
+      typeof window.TelegramWebview !== "undefined";
+    if (isTelegram) {
+      document.documentElement.classList.add("is-telegram-webview");
+    }
+  } catch {
+    /* ignore */
+  }
+})();
+
 (function applyStoredThemeEarly() {
   const THEME_STORAGE_KEY = "wedding-theme-vars";
   const MOBILE_LOCK_STORAGE_KEY = "wedding-mobile-theme-lock";

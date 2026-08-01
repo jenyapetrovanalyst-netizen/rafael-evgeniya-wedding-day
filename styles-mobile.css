@@ -1773,4 +1773,94 @@
   footer.final.final-scene .hero-beam {
     will-change: auto;
   }
+
+  /*
+   * Telegram in-app browser часто шлёт prefers-reduced-motion: reduce
+   * (не как настройка пользователя) — из‑за этого пропадает Ken Burns.
+   * Возвращаем динамику фото только во WebView Telegram.
+   */
+  html.is-telegram-webview .hero-media-img,
+  html.is-telegram-webview footer.final.final-scene .hero-media-img {
+    animation: heroKenBurns 36s linear infinite !important;
+  }
+
+  html.is-telegram-webview .site-light-ambience .hero-beam--right,
+  html.is-telegram-webview .hero .hero-beam--right,
+  html.is-telegram-webview footer.final.final-scene .hero-beam--right {
+    animation: heroBeamRight var(--hero-beam-cycle, 20s) linear infinite !important;
+  }
+
+  html.is-telegram-webview .site-light-ambience .hero-beam--left,
+  html.is-telegram-webview .hero .hero-beam--left,
+  html.is-telegram-webview footer.final.final-scene .hero-beam--left {
+    animation: heroBeamLeft var(--hero-beam-cycle, 20s) linear infinite !important;
+  }
+
+  html.is-telegram-webview .site-light-ambience .hero-beam--cross-a,
+  html.is-telegram-webview .hero .hero-beam--cross-a,
+  html.is-telegram-webview footer.final.final-scene .hero-beam--cross-a {
+    animation: heroBeamCrossA var(--hero-beam-cycle, 20s) linear infinite !important;
+  }
+
+  html.is-telegram-webview .site-light-ambience .hero-beam--cross-b,
+  html.is-telegram-webview .hero .hero-beam--cross-b,
+  html.is-telegram-webview footer.final.final-scene .hero-beam--cross-b {
+    animation: heroBeamCrossB var(--hero-beam-cycle, 20s) linear infinite !important;
+  }
+
+  .tg-open-safari {
+    display: none;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 40;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+    background: rgba(36, 42, 14, 0.92);
+    color: #f3f0e6;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  html.is-telegram-webview .tg-open-safari.is-visible {
+    display: flex;
+  }
+
+  .tg-open-safari-text {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+
+  .tg-open-safari-btn {
+    flex-shrink: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    background: #e8e2d4;
+    color: #2f3614;
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .tg-open-safari-close {
+    flex-shrink: 0;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: rgba(243, 240, 230, 0.72);
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.15rem 0.2rem;
+  }
 }
