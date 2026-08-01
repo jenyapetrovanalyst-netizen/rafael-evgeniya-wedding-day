@@ -1767,15 +1767,7 @@
     filter: none;
   }
 
-  /* Ken Burns на полном экране даёт рывки — фото статично */
-  .hero-media-img,
-  footer.final.final-scene .hero-media-img {
-    animation: none !important;
-    will-change: auto;
-    transform: scale(1.12);
-  }
-
-  /* Лучи снова анимируются; без will-change — меньше jank при скролле */
+  /* Лучи анимируются; без will-change — меньше jank при скролле */
   html.layout-unified .site-light-ambience .hero-beam,
   .hero .hero-beam,
   footer.final.final-scene .hero-beam {
