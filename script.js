@@ -597,9 +597,7 @@ function initWeddingMusic() {
     document.addEventListener("pointerdown", unlock, { capture: true });
     document.addEventListener("touchstart", unlock, { capture: true, passive: true });
     document.addEventListener("click", unlock, { capture: true });
-    window.addEventListener("scroll", unlock, { capture: true, passive: true });
-    window.addEventListener("wheel", unlock, { capture: true, passive: true });
-    window.addEventListener("touchmove", unlock, { capture: true, passive: true });
+    /* scroll/touchmove намеренно не слушаем — на мобиле дают микрозадержки при пролистывании */
   }
 
   function removeUnlockListeners() {
@@ -609,9 +607,6 @@ function initWeddingMusic() {
     document.removeEventListener("pointerdown", unlock, { capture: true });
     document.removeEventListener("touchstart", unlock, { capture: true });
     document.removeEventListener("click", unlock, { capture: true });
-    window.removeEventListener("scroll", unlock, { capture: true });
-    window.removeEventListener("wheel", unlock, { capture: true });
-    window.removeEventListener("touchmove", unlock, { capture: true });
     unlockBound = false;
   }
 

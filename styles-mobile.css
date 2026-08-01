@@ -1741,3 +1741,62 @@
     filter: blur(52px) saturate(1.4) brightness(1.3);
   }
 }
+
+/* ——— ≤768px: плавнее нативный скролл (меньше jank от GPU-эффектов) ——— */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* blur-фильтр + transform на каждом reveal — дёргает композитор */
+  .reveal {
+    filter: none;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .reveal.is-visible {
+    filter: none;
+  }
+
+  /* Ken Burns + will-change на полноэкранном фото */
+  .hero-media-img,
+  footer.final.final-scene .hero-media-img {
+    animation: none !important;
+    will-change: auto;
+    transform: scale(1.12);
+  }
+
+  .hero-sun-glow,
+  .hero-light-leak,
+  .hero-light-leak--a,
+  .hero-light-leak--b {
+    animation: none !important;
+  }
+
+  /* Фиксированные лучи с blur + бесконечный transform — главный источник рывков */
+  html.layout-unified .site-light-ambience {
+    contain: paint;
+    transform: translateZ(0);
+  }
+
+  html.layout-unified .site-light-ambience .hero-beam,
+  .hero .hero-beam,
+  footer.final.final-scene .hero-beam {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  html.layout-unified .site-light-ambience .hero-beam {
+    filter: blur(28px) saturate(1.35) brightness(1.28);
+  }
+
+  .hero .hero-beam,
+  footer.final.final-scene .hero-beam {
+    filter: blur(28px) saturate(1.3) brightness(1.22);
+  }
+}
