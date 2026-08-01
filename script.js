@@ -710,66 +710,6 @@ function initRevealAnimations() {
   revealElements.forEach((element) => observer.observe(element));
 }
 
-/** Сайт не может заставить Telegram открыть ссылку в Safari сам — только подсказка гостю. */
-function initTelegramExternalBrowserPrompt() {
-  if (!document.documentElement.classList.contains("is-telegram-webview")) {
-    return;
-  }
-  if (window.matchMedia && !window.matchMedia("(max-width: 768px)").matches) {
-    return;
-  }
-
-  const banner = document.getElementById("tgOpenSafari");
-  const openBtn = document.getElementById("tgOpenSafariBtn");
-  const closeBtn = document.getElementById("tgOpenSafariClose");
-  if (!banner || !openBtn) {
-    return;
-  }
-
-  const dismissKey = "wedding-tg-safari-hint-dismissed";
-  try {
-    if (sessionStorage.getItem(dismissKey) === "1") {
-      return;
-    }
-  } catch {
-    /* ignore */
-  }
-
-  banner.hidden = false;
-  banner.classList.add("is-visible");
-
-  const hide = () => {
-    banner.classList.remove("is-visible");
-    banner.hidden = true;
-    try {
-      sessionStorage.setItem(dismissKey, "1");
-    } catch {
-      /* ignore */
-    }
-  };
-
-  openBtn.addEventListener("click", () => {
-    const href = window.location.href;
-    const ua = navigator.userAgent || "";
-    if (/iPhone|iPad|iPod/i.test(ua)) {
-      window.location.href = href
-        .replace(/^https:\/\//i, "x-safari-https://")
-        .replace(/^http:\/\//i, "x-safari-http://");
-      return;
-    }
-    if (/Android/i.test(ua)) {
-      const path = href.replace(/^https?:\/\//i, "");
-      window.location.href = `intent://${path}#Intent;scheme=https;action=android.intent.action.VIEW;end`;
-      return;
-    }
-    window.open(href, "_blank", "noopener,noreferrer");
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", hide);
-  }
-}
-
 function enhanceRsvpSelect(select) {
   if (!select || select.dataset.rsvpEnhanced === "1") {
     return null;
@@ -2088,7 +2028,6 @@ updateCountdown();
 initWeddingMusic();
 initPreloader();
 initRevealAnimations();
-initTelegramExternalBrowserPrompt();
 initForm();
 initResizableBlocks();
 initThemePanel();
