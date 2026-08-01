@@ -458,13 +458,19 @@ function initPreloader() {
   }
 
   const minVisibleMs = 1800;
+  const maxWaitMs = 2800;
   const startedAt = Date.now();
   const dateNode = document.getElementById("preloaderDate");
   if (dateNode && !String(dateNode.textContent || "").trim() && siteContent?.wedding?.dateLabel) {
     dateNode.textContent = siteContent.wedding.dateLabel;
   }
 
+  let finished = false;
   const revealAndHide = () => {
+    if (finished) {
+      return;
+    }
+    finished = true;
     preloader.classList.add("is-font-ready");
     const elapsed = Date.now() - startedAt;
     const wait = Math.max(0, minVisibleMs - elapsed);
@@ -486,6 +492,8 @@ function initPreloader() {
   };
 
   waitForPreloaderFonts().then(revealAndHide);
+  /* Telegram / WebView: document.fonts иногда не резолвится — не держим прелоадер вечно */
+  window.setTimeout(revealAndHide, maxWaitMs);
 }
 
 function initWeddingMusic() {
@@ -1142,14 +1150,18 @@ function applyEditorLayoutSnapshot(editor) {
   if (!editor || typeof editor !== "object") {
     return;
   }
-  if (editor.richCopy && typeof editor.richCopy === "object") {
-    localStorage.setItem(EDITOR_RICH_COPY_KEY, JSON.stringify(editor.richCopy));
-  }
-  if (editor.editableSizes && typeof editor.editableSizes === "object") {
-    localStorage.setItem(EDITOR_SIZES_KEY, JSON.stringify(editor.editableSizes));
-  }
-  if (editor.fieldSizes && typeof editor.fieldSizes === "object") {
-    localStorage.setItem(EDITOR_FIELD_SIZES_KEY, JSON.stringify(editor.fieldSizes));
+  try {
+    if (editor.richCopy && typeof editor.richCopy === "object") {
+      localStorage.setItem(EDITOR_RICH_COPY_KEY, JSON.stringify(editor.richCopy));
+    }
+    if (editor.editableSizes && typeof editor.editableSizes === "object") {
+      localStorage.setItem(EDITOR_SIZES_KEY, JSON.stringify(editor.editableSizes));
+    }
+    if (editor.fieldSizes && typeof editor.fieldSizes === "object") {
+      localStorage.setItem(EDITOR_FIELD_SIZES_KEY, JSON.stringify(editor.fieldSizes));
+    }
+  } catch {
+    /* Telegram WebView / private mode: localStorage может быть недоступен */
   }
   if (window.WeddingTextEditor && typeof window.WeddingTextEditor.applySavedHtml === "function") {
     window.WeddingTextEditor.applySavedHtml();

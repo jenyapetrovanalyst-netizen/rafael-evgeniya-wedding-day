@@ -158,16 +158,16 @@
     });
   }
 
-  function loadRepoSiteLockSync() {
+  /** Inline JSON — надёжно во встроенных браузерах (Telegram), где sync XHR ломается */
+  function loadInlineSiteLock() {
     try {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", SITE_LOCK_FILE, false);
-      xhr.send(null);
-      if (xhr.status >= 200 && xhr.status < 300 && xhr.responseText) {
-        const data = JSON.parse(xhr.responseText);
-        if (data && data.theme && typeof data.theme === "object") {
-          return data;
-        }
+      const node = document.getElementById("site-theme-lock-json");
+      if (!node) {
+        return null;
+      }
+      const data = JSON.parse(node.textContent || "");
+      if (data && data.theme && typeof data.theme === "object") {
+        return data;
       }
     } catch {
       /* ignore */
@@ -187,11 +187,26 @@
     return null;
   }
 
-  const repoLock = loadRepoSiteLockSync();
-  const deviceLock = loadDeviceMobileLock();
+  function applyThemeColorMeta() {
+    const rootStyle = document.documentElement.style;
+    const themeColor =
+      rootStyle.getPropertyValue("--linen").trim() ||
+      rootStyle.getPropertyValue("--hero-bg").trim() ||
+      "#4b5620";
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeColorMeta && /^#[0-9a-fA-F]{3,8}$/.test(themeColor)) {
+      themeColorMeta.setAttribute("content", themeColor);
+    }
+  }
 
-  // Старый localStorage — только если нет lock в репозитории
-  if (!repoLock) {
+  function applyRepoOrDeviceLock(repoLock) {
+    if (repoLock) {
+      applyThemeLayer(repoLock.theme);
+      applyThemeColorMeta();
+      return;
+    }
+
+    const deviceLock = loadDeviceMobileLock();
     if (deviceLock) {
       applyThemeLayer(deviceLock.theme);
     }
@@ -214,18 +229,28 @@
         /* ignore */
       }
     }
-  } else {
-    // Зафиксированный дизайн из mobile-theme-lock.json — главный источник
-    applyThemeLayer(repoLock.theme);
+    applyThemeColorMeta();
   }
 
-  const rootStyle = document.documentElement.style;
-  const themeColor =
-    rootStyle.getPropertyValue("--linen").trim() ||
-    rootStyle.getPropertyValue("--hero-bg").trim() ||
-    "#4b5620";
-  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeColorMeta && /^#[0-9a-fA-F]{3,8}$/.test(themeColor)) {
-    themeColorMeta.setAttribute("content", themeColor);
+  // 1) Сразу из inline (Telegram / любой WebView)
+  const inlineLock = loadInlineSiteLock();
+  if (inlineLock) {
+    applyRepoOrDeviceLock(inlineLock);
+  } else {
+    // 2) Fallback: async fetch — без sync XHR (он зависает в Telegram)
+    applyRepoOrDeviceLock(null);
+    try {
+      fetch(SITE_LOCK_FILE, { cache: "no-cache" })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((data) => {
+          if (data && data.theme && typeof data.theme === "object") {
+            applyThemeLayer(data.theme);
+            applyThemeColorMeta();
+          }
+        })
+        .catch(() => undefined);
+    } catch {
+      /* ignore */
+    }
   }
 })();
