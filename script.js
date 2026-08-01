@@ -1562,7 +1562,8 @@ function initThemePanel() {
 
   const panel = document.getElementById("themePanel");
   const toggle = document.getElementById("themePanelToggle");
-  if (panel && toggle) {
+  const editingAllowed = new URLSearchParams(window.location.search).get("edit") === "1";
+  if (panel && toggle && editingAllowed) {
     if (EDITOR_SPLIT_MODE) {
       panel.classList.remove("is-collapsed");
     } else {
@@ -1571,6 +1572,9 @@ function initThemePanel() {
         panel.classList.toggle("is-collapsed");
       });
     }
+  } else if (panel) {
+    panel.hidden = true;
+    panel.setAttribute("aria-hidden", "true");
   }
 
   const mobileLockBtn = document.getElementById("themeMobileLockBtn");

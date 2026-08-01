@@ -1041,8 +1041,24 @@
   }
 
   function boot() {
-    createBar();
+    // Публичный сайт: без панели и без contenteditable для гостей.
+    // Включить снова: ?edit=1 в адресе (только для владельцев).
+    const editingAllowed = new URLSearchParams(window.location.search).get("edit") === "1";
     applySavedHtml();
+    if (!editingAllowed) {
+      setEditingEnabled(false);
+      document.querySelectorAll("[contenteditable]").forEach((node) => {
+        node.removeAttribute("contenteditable");
+        node.contentEditable = "false";
+      });
+      const panel = document.getElementById("themePanel");
+      if (panel) {
+        panel.hidden = true;
+        panel.setAttribute("aria-hidden", "true");
+      }
+      return;
+    }
+    createBar();
     bindEditableEvents();
     syncWithThemePanel();
     document.addEventListener("mousemove", onDragMove);

@@ -24,9 +24,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="standard-invitations/fonts-pinterest.css?v=1" />
-    <link rel="stylesheet" href="styles.css?v=135" />
+    <link rel="stylesheet" href="styles.css?v=136" />
     <link rel="stylesheet" href="styles-mobile.css?v=131" />
     <link rel="stylesheet" href="text-editor.css?v=4" />
+    <script>
+      /* Режим правки только с ?edit=1 — для гостей панель скрыта */
+      try {
+        if (new URLSearchParams(location.search).get("edit") === "1") {
+          document.documentElement.setAttribute("data-site-edit", "1");
+        }
+      } catch (e) {}
+    </script>
     <script src="theme-early.js?v=28"></script>
     <style>
       /* Прелоадер: ничего не показываем, пока шрифты и дата готовы */
@@ -326,8 +334,8 @@
           </div>
           <div class="final-scene-overlay" aria-hidden="true"></div>
           <div class="section-inner">
-            <p id="finalText" contenteditable="true"></p>
-            <p class="final-signature" id="finalSignature" contenteditable="true"></p>
+            <p id="finalText"></p>
+            <p class="final-signature" id="finalSignature"></p>
           </div>
         </footer>
       </div>
@@ -345,7 +353,7 @@
 
     <script src="content.js?v=31"></script>
     <script src="design-theme.js?v=36"></script>
-    <script src="text-editor.js?v=33"></script>
-    <script src="script.js?v=75"></script>
+    <script src="text-editor.js?v=34"></script>
+    <script src="script.js?v=76"></script>
   </body>
 </html>
